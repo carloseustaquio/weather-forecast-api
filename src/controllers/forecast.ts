@@ -1,11 +1,10 @@
-import { Controller, Get } from '@overnightjs/core'
-import { Request, Response } from 'express'
+import { Controller, Get } from "@overnightjs/core";
+import { Request, Response } from "express";
 
-@Controller('forecast')
+@Controller("forecast")
 export class ForecastController {
-
-  @Get('')
+  @Get("")
   public getForecastForLoggedUser(_: Request, res: Response): void {
-    res.send([{ "forecast": 1234 }])
+    res.send([{ forecast: 1234 }]);
   }
 }
