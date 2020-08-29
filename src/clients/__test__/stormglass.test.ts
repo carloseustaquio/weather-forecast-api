@@ -38,4 +38,33 @@ describe("StormGlas client", () => {
     const response = await stormGlass.fetchPoints(lat, long);
     expect(response).toEqual([]);
   });
+
+  it("should get a generic error from StormGlass service when the request fail before reaching the service", async () => {
+    const lat = -33.792726;
+    const long = 151.123456;
+
+    mockedAxios.get.mockRejectedValue({ message: "Network Error" });
+
+    const stormGlass = new StormGlass(mockedAxios);
+    await expect(stormGlass.fetchPoints(lat, long)).rejects.toThrow(
+      "Unexpected error when trying to communicate to StormGlass: Network Error"
+    );
+  });
+
+  it("should get an StormGlassResponseError when the StormGlass service resonds with error", async () => {
+    const lat = -33.792726;
+    const long = 151.123456;
+
+    mockedAxios.get.mockRejectedValue({
+      response: {
+        status: 429,
+        data: { errors: ["Rate Limit reached"] },
+      },
+    });
+
+    const stormGlass = new StormGlass(mockedAxios);
+    await expect(stormGlass.fetchPoints(lat, long)).rejects.toThrow(
+      'Unexpected error returned by the StormGlass service: Error: {"errors":["Rate Limit reached"]} Code: 429'
+    );
+  });
 });
