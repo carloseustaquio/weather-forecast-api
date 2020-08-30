@@ -28,15 +28,5 @@
     "waveHeight": 0.29,
     "windDirection": 125.23,
     "windSpeed": 2.23
-  },
-  {
-    "swellDirection": 101.68,
-    "swellHeight": 0.78,
-    "swellPeriod": 4.6,
-    "time": "2020-08-29T03:00:00+00:00",
-    "waveDirection": 133.31,
-    "waveHeight": 0.34,
-    "windDirection": 75.96,
-    "windSpeed": 3.07
   }
 ]

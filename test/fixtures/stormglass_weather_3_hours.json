@@ -71,30 +71,6 @@
       "windSpeed": {
         "noaa": 2.23
       }
-    },
-    {
-      "swellDirection": {
-        "noaa": 101.68
-      },
-      "swellHeight": {
-        "noaa": 0.78
-      },
-      "swellPeriod": {
-        "noaa": 4.6
-      },
-      "time": "2020-08-29T03:00:00+00:00",
-      "waveDirection": {
-        "noaa": 133.31
-      },
-      "waveHeight": {
-        "noaa": 0.34
-      },
-      "windDirection": {
-        "noaa": 75.96
-      },
-      "windSpeed": {
-        "noaa": 3.07
-      }
     }
   ],
   "meta": {
