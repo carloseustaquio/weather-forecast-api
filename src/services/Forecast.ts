@@ -1,27 +1,13 @@
 import { StormGlass, ForecastPoint } from "@src/clients/StormGlass";
 import { InternalError } from "@src/util/errors/internal-errors";
-
-export enum BeachPosition {
-  S = "S",
-  E = "E",
-  W = "W",
-  N = "N",
-}
-
-export interface Beach {
-  lat: number;
-  lng: number;
-  name: string;
-  position: BeachPosition;
-  user: string;
-}
+import { Beach } from "@src/models/beach"
 
 export interface TimeForecast {
   time: string;
   forecast: BeachForecast[];
 }
 
-export interface BeachForecast extends Omit<Beach, "user">, ForecastPoint {}
+export interface BeachForecast extends Omit<Beach, "user">, ForecastPoint { }
 
 export class ForecastProcessingInternalError extends InternalError {
   constructor(message: string) {
@@ -30,7 +16,7 @@ export class ForecastProcessingInternalError extends InternalError {
 }
 
 export class Forecast {
-  constructor(protected stormGlass = new StormGlass()) {}
+  constructor(protected stormGlass = new StormGlass()) { }
 
   public async processForecastForBeaches(
     beaches: Beach[]
